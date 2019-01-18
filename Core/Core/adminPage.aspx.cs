@@ -35,11 +35,15 @@ namespace Core
                 gridClientes.DataBind();
                 var cuentaRelaciona = entidad.Clientes.FirstOrDefault();
 
-                cuentasGV.DataSource = (from u in entidad.Cuentas where u.ID == cli.ID select u).ToList();
-                cuentasGV.DataBind();
+                if (!(SearchBox.Text == ""))
+                {
+                    cuentasGV.DataSource = (from u in entidad.Cuentas where u.ID == cli.ID select u).ToList();
+                    cuentasGV.DataBind();
+                    prestamoGV.DataSource = (from u in entidad.Prestamos where u.CuentaRelacionada == cli.ID select u).ToList();
+                    prestamoGV.DataBind();
+                }
 
-                prestamoGV.DataSource = (from u in entidad.Prestamos where u.CuentaRelacionada == cli.ID select u).ToList();
-                prestamoGV.DataBind();
+                
 
                 
 
@@ -59,6 +63,11 @@ namespace Core
         protected void AbrirPrestamo_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/OpenLoan.aspx");
+        }
+
+        protected void RealizarPagoPrestamo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/LoanPayment.aspx");
         }
     }
 }

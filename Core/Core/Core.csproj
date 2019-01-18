@@ -88,6 +88,7 @@
       <LastGenOutput>BBmodel.cs</LastGenOutput>
     </Content>
     <Content Include="default.aspx" />
+    <Content Include="LoanPayment.aspx" />
     <Content Include="OpenLoan.aspx" />
     <Content Include="NewAccount.aspx" />
     <Content Include="NewClient.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoanPayment.aspx.cs">
+      <DependentUpon>LoanPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoanPayment.aspx.designer.cs">
+      <DependentUpon>LoanPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="OpenLoan.aspx.cs">
       <DependentUpon>OpenLoan.aspx</DependentUpon>

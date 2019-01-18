@@ -62,7 +62,7 @@
                 Solicitar prestamo
             </asp:LinkButton><br />
 
-            <asp:LinkButton ID="RealizarPagoPrestamo" runat="server">
+            <asp:LinkButton ID="RealizarPagoPrestamo" runat="server" OnClick="RealizarPagoPrestamo_Click">
                 Pagar prestamo
             </asp:LinkButton>
         </div>

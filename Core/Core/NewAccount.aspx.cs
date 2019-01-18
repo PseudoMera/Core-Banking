@@ -19,8 +19,9 @@ namespace Core
             Random rnd = new Random();
             //string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CoreDBConnectionString"].ToString();
             using (MyBankEntities entidad = new MyBankEntities())
-            { 
-                int idcliente = Convert.ToInt32(entidad.Clientes.FirstOrDefault(c => c.CedulaIdentidad.Equals(cedulaBox.Text)));
+            {
+                Cliente cl = entidad.Clientes.FirstOrDefault(c => c.CedulaIdentidad.Equals(cedulaBox.Text));
+                int idcliente = cl.ID;
                 string tipo = tipoBox.Text;
                 float saldo = Convert.ToSingle(saldoBox.Text);
                 float tasainteres = Convert.ToSingle(0);
@@ -38,7 +39,8 @@ namespace Core
                 };
 
                 entidad.Cuentas.Add(t);
-                
+                entidad.SaveChanges();
+
                 ClientScript.RegisterStartupScript(typeof(Page), "NewAccount", "window.close();", true);
             }
         }
