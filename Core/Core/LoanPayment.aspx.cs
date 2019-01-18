@@ -18,22 +18,28 @@ namespace Core
         {
             using (MyBankEntities entities = new MyBankEntities())
             {
-                float monto = Convert.ToSingle(saldoBox.Text);
-                Cliente rest = entities.Clientes.FirstOrDefault(c => c.CedulaIdentidad == cedulaBox.Text);
-                Prestamo prest = entities.Prestamos.FirstOrDefault(c => c.CuentaRelacionada == rest.ID);
-
-                if(monto > prest.Monto)
+                if (saldoBox.Text != "" && cedulaBox != "")
                 {
-                    Response.Write("No puedes pagar de mas");
+                    float monto = Convert.ToSingle(saldoBox.Text);
+                    Cliente rest = entities.Clientes.FirstOrDefault(c => c.CedulaIdentidad == cedulaBox.Text);
+                    Prestamo prest = entities.Prestamos.FirstOrDefault(c => c.CuentaRelacionada == rest.ID);
+
+                    if (monto > prest.Monto)
+                    {
+                        Response.Write("No puedes pagar de mas");
+                    }
+                    else
+                    {
+                        prest.Monto -= monto;
+                    }
+
+
+                    entities.SaveChanges();
+                    Response.Redirect("~/adminPage.aspx");
                 } else
                 {
-                    prest.Monto -= monto;
+                    Response.Write("No ha introducido ningun dato");
                 }
-
-             
-                entities.SaveChanges();
-                Response.Redirect("~/adminPage.aspx");
-            }
         }
     }
 }
