@@ -43,8 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -69,7 +77,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminPage.aspx" />
+    <Content Include="BBmodel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BBmodel.Context.cs</LastGenOutput>
+      <DependentUpon>BBmodel.edmx</DependentUpon>
+    </Content>
+    <Content Include="BBmodel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BBmodel.edmx</DependentUpon>
+      <LastGenOutput>BBmodel.cs</LastGenOutput>
+    </Content>
     <Content Include="default.aspx" />
+    <Content Include="OpenLoan.aspx" />
     <Content Include="NewAccount.aspx" />
     <Content Include="NewClient.aspx" />
     <Content Include="Web.config">
@@ -84,10 +103,29 @@
     <Compile Include="adminPage.aspx.designer.cs">
       <DependentUpon>adminPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DBmodel.designer.cs">
+    <Compile Include="BBmodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBmodel.dbml</DependentUpon>
+      <DependentUpon>BBmodel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BBmodel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BBmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BBmodel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BBmodel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>BBmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cuenta.cs">
+      <DependentUpon>BBmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>BBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -95,6 +133,16 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OpenLoan.aspx.cs">
+      <DependentUpon>OpenLoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpenLoan.aspx.designer.cs">
+      <DependentUpon>OpenLoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Movimiento.cs">
+      <DependentUpon>BBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="NewAccount.aspx.cs">
       <DependentUpon>NewAccount.aspx</DependentUpon>
@@ -110,17 +158,19 @@
     <Compile Include="NewClient.aspx.designer.cs">
       <DependentUpon>NewClient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Prestamo.cs">
+      <DependentUpon>BBmodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBmodel.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DBmodel.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EntityDeploy Include="BBmodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BBmodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BBmodel.edmx.diagram">
+      <DependentUpon>BBmodel.edmx</DependentUpon>
     </Content>
-    <None Include="DBmodel.dbml.layout">
-      <DependentUpon>DBmodel.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -131,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

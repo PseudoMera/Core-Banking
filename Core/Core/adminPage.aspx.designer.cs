@@ -22,15 +22,6 @@ namespace Core {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// NewCliente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton NewCliente;
-        
-        /// <summary>
         /// table1 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace Core {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SearchBtn;
+        
+        /// <summary>
+        /// clientLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label clientLabel;
         
         /// <summary>
         /// gridClientes control.
@@ -85,6 +85,24 @@ namespace Core {
         protected global::System.Web.UI.WebControls.GridView cuentasGV;
         
         /// <summary>
+        /// prestamoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label prestamoLabel;
+        
+        /// <summary>
+        /// prestamoGV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView prestamoGV;
+        
+        /// <summary>
         /// optionsLabel control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace Core {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label optionsLabel;
+        
+        /// <summary>
+        /// NewCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton NewCliente;
         
         /// <summary>
         /// NewCuenta control.
@@ -110,5 +137,14 @@ namespace Core {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AbrirPrestamo;
+        
+        /// <summary>
+        /// RealizarPagoPrestamo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton RealizarPagoPrestamo;
     }
 }

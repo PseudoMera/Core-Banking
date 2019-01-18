@@ -58,8 +58,8 @@
                     <td>Genero</td>  
                     <td>  
                         <asp:RadioButtonList ID="genderListBox" runat="server">  
-                            <asp:ListItem>Hombre</asp:ListItem>  
-                            <asp:ListItem>Mujer</asp:ListItem>  
+                            <asp:ListItem>H</asp:ListItem>  
+                            <asp:ListItem>M</asp:ListItem>  
                         </asp:RadioButtonList>  
                     </td>  
                </tr>  

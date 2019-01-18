@@ -17,19 +17,29 @@ namespace Core
         protected void createBtn_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CoreDBConnectionString"].ToString();
-            DBmodelDataContext db = new DBmodelDataContext(connectionString);
-            Cuenta account = new Cuenta();
-            Cliente cliente = db.Clientes.FirstOrDefault(t => t.CedulaIdentidad.Equals(cedulaBox.Text));
-            account.NumeroDeCuenta = rnd.Next(1, 5000);
-            account.Tipo = tipoBox.Text;
-            account.Propietario = cliente.Nombre;
-            account.Saldo = Convert.ToInt64(saldoBox.Text);
-            account.IdCuenta = cliente.ID;
-            account.TasaInteres = 0;
-            db.Cuentas.InsertOnSubmit(account);
-            db.SubmitChanges();
-            ClientScript.RegisterStartupScript(typeof(Page), "NewAccount", "window.close();", true);
+            //string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CoreDBConnectionString"].ToString();
+            using (MyBankEntities entidad = new MyBankEntities())
+            { 
+                int idcliente = Convert.ToInt32(entidad.Clientes.FirstOrDefault(c => c.CedulaIdentidad.Equals(cedulaBox.Text)));
+                string tipo = tipoBox.Text;
+                float saldo = Convert.ToSingle(saldoBox.Text);
+                float tasainteres = Convert.ToSingle(0);
+                int numerocuenta = rnd.Next(1,10000);
+
+                var t = new Cuenta
+                {
+                    ID = idcliente,
+                    Tipo = tipo,
+                    Saldo = saldo,
+                    TasaInteres = tasainteres,
+                    NumeroCuenta = numerocuenta
+
+                };
+
+                entidad.Cuentas.Add(t);
+                
+                ClientScript.RegisterStartupScript(typeof(Page), "NewAccount", "window.close();", true);
+            }
         }
     }
 }

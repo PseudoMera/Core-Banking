@@ -54,3 +54,7 @@ C:\Users\Albin\Repos\Core-Banking\Core\Core\obj\Debug\Core.csproj.CoreCompileInp
 C:\Users\Albin\Repos\Core-Banking\Core\Core\obj\Debug\Core.csproj.CopyComplete
 C:\Users\Albin\Repos\Core-Banking\Core\Core\obj\Debug\Core.dll
 C:\Users\Albin\Repos\Core-Banking\Core\Core\obj\Debug\Core.pdb
+C:\Users\Albin\Repos\Core-Banking\Core\Core\bin\EntityFramework.dll
+C:\Users\Albin\Repos\Core-Banking\Core\Core\bin\EntityFramework.SqlServer.dll
+C:\Users\Albin\Repos\Core-Banking\Core\Core\bin\EntityFramework.xml
+C:\Users\Albin\Repos\Core-Banking\Core\Core\bin\EntityFramework.SqlServer.xml

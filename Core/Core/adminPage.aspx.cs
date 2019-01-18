@@ -21,21 +21,35 @@ namespace Core
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            DBmodelDataContext dbContext = new DBmodelDataContext();
-            Cliente client = dbContext.Clientes.FirstOrDefault(t => t.CedulaIdentidad == SearchBox.Text);
             Cuenta cuent = new Cuenta();
+            using (MyBankEntities entidad = new MyBankEntities())
+            {
+                // Cliente client = from cliente in entidad.Clientes where cliente.CedulaIdentidad == SearchBox.Text select cliente;
+                var cli = entidad.Clientes.FirstOrDefault(t => t.CedulaIdentidad.Equals(SearchBox.Text));
 
-            gridClientes.DataSource = from clientes in dbContext.Clientes where clientes.CedulaIdentidad == SearchBox.Text select clientes;
-            gridClientes.DataBind();
-           
-            cuentasGV.DataSource = client.Cuentas;
-            cuentasGV.DataBind();   
+                gridClientes.DataSource = (from u in entidad.Clientes where u.CedulaIdentidad == SearchBox.Text select u).ToList();
+                gridClientes.DataBind();
+                var cuentaRelaciona = entidad.Clientes.FirstOrDefault();
+
+                cuentasGV.DataSource = (from u in entidad.Cuentas where u.ID == cli.ID select u).ToList();
+                cuentasGV.DataBind();
+
+                prestamoGV.DataSource = (from u in entidad.Prestamos where u.CuentaRelacionada == cli.ID select u).ToList();
+                prestamoGV.DataBind();
+               // cuentasGV.DataSource = ;
+               // cuentasGV.DataBind();
+            }
         }
 
         protected void openCliente_Click(object sender, EventArgs e)
         {
             if(gridClientes.Rows.Count > 0)
                 Response.Redirect("~/PerfilCliente.aspx");
+        }
+
+        protected void AbrirPrestamo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/OpenLoan.aspx");
         }
     }
 }

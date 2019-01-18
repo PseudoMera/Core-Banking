@@ -40,15 +40,6 @@ namespace Core {
         protected global::System.Web.UI.WebControls.TextBox saldoBox;
         
         /// <summary>
-        /// createBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createBtn;
-        
-        /// <summary>
         /// cedulaBox control.
         /// </summary>
         /// <remarks>
@@ -56,5 +47,14 @@ namespace Core {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cedulaBox;
+        
+        /// <summary>
+        /// createBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button createBtn;
     }
 }

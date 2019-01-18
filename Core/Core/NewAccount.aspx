@@ -39,11 +39,7 @@
                     <td>Saldo</td>  
                      <td> <asp:TextBox ID="saldoBox" runat="server"></asp:TextBox></td>  
                 </tr>   
-                <tr>
-                    <td>  
-                        <asp:Button ID="createBtn" runat="server" Text="Crear" OnClick="createBtn_Click" />  
-                    </td>  
-                </tr>  
+                
 
                 <tr>
                     <td>cedula</td>
@@ -51,6 +47,12 @@
                         <asp:TextBox ID="cedulaBox" runat="server"></asp:TextBox>"
                     </td>
                 </tr>
+
+                <tr>
+                    <td>  
+                        <asp:Button ID="createBtn" runat="server" Text="Crear" OnClick="createBtn_Click" />  
+                    </td>  
+                </tr>  
             </table>  
         </div>
     </form>

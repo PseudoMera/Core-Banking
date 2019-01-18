@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Ciudad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Pais" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TelefonoResidencial" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TelefonoCelular" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="CedulaIdentidad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCliente" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Saldo" Type="Double" />
+    <Property Name="TasaInteres" Type="Double" />
+    <Property Name="NumeroCuenta" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="idMovimiento" />
+    </Key>
+    <Property Name="idMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoMovimiento" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Monto" Type="Double" />
+    <Property Name="CuentaEmisor" Type="Int32" />
+    <Property Name="CuentaReceptor" Type="Int32" />
+    <Property Name="TiempoStamp" Type="DateTime" Precision="3" />
+    <Property Name="Banco" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Intereses" Type="Int32" />
+    <Property Name="FechaApertura" Type="DateTime" Precision="3" />
+    <Property Name="FechaPlazo" Type="DateTime" Precision="3" />
+    <Property Name="CuentaRelacionada" Type="Int32" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="MyBankEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Cuentas" EntityType="Self.Cuenta" />
+    <EntitySet Name="Movimientos" EntityType="Self.Movimiento" />
+    <EntitySet Name="Prestamos" EntityType="Self.Prestamo" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <FunctionImport Name="Add_Cliente">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Ciudad" Mode="In" Type="String" />
+      <Parameter Name="Pais" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="TelefonoResidencial" Mode="In" Type="String" />
+      <Parameter Name="TelefonoCelular" Mode="In" Type="String" />
+      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+      <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
