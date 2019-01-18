@@ -43,6 +43,9 @@
              <asp:Label runat="server" ID ="prestamoLabel" Font-Size="Large" Font-Bold ="true" Font-Underline="true">Prestamos</asp:Label><br />
             <asp:GridView runat="server" ID="prestamoGV"></asp:GridView>
 
+            <asp:Label runat="server" ID="movimientosLabel" Font-Size="Large" Font-Bold="true" Font-Underline="true">Movimientos</asp:Label> <br />
+            <asp:GridView runat="server" ID="movimientosGV"></asp:GridView>
+
 
             <asp:Label runat="server" ID="optionsLabel" Font-Size="Large" Font-Bold="true" Font-Underline="true">Opciones</asp:Label><br />
 

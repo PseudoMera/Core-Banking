@@ -47,6 +47,7 @@
     <Property Name="FechaApertura" Type="DateTime" Precision="3" />
     <Property Name="FechaPlazo" Type="DateTime" Precision="3" />
     <Property Name="CuentaRelacionada" Type="Int32" />
+    <Property Name="Monto" Type="Double" />
   </EntityType>
   <EntityType Name="database_firewall_rules">
     <Key>

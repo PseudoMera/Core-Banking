@@ -32,7 +32,8 @@ namespace Core
                     Tipo = tipo,
                     Saldo = saldo,
                     TasaInteres = tasainteres,
-                    NumeroCuenta = numerocuenta
+                    NumeroCuenta = numerocuenta,
+                   
 
                 };
 

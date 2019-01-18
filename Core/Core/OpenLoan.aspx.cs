@@ -32,7 +32,7 @@ namespace Core
                     FechaApertura = fechaAper,
                     FechaPlazo = fechaPlazo,
                     CuentaRelacionada = cr,
-     
+                    Monto = monto
                 };
 
                 entities.Prestamos.Add(c);

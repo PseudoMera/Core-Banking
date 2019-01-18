@@ -45,6 +45,7 @@
     <EntitySetMapping Name="Prestamos">
       <EntityTypeMapping TypeName="MyBankModel.Prestamo">
         <MappingFragment StoreEntitySet="Prestamos">
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Intereses" ColumnName="Intereses" />
           <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />

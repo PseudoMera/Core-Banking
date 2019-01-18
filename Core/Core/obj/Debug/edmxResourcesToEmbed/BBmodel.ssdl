@@ -47,6 +47,7 @@
     <Property Name="FechaApertura" Type="datetime" />
     <Property Name="FechaPlazo" Type="datetime" />
     <Property Name="CuentaRelacionada" Type="int" />
+    <Property Name="Monto" Type="float" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MyBank.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->

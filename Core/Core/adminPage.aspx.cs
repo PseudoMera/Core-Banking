@@ -11,7 +11,11 @@ namespace Core
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            using (MyBankEntities entidad = new MyBankEntities())
+            {
+                movimientosGV.DataSource = (from u in entidad.Movimientos select u).ToList();
+                movimientosGV.DataBind();
+            }
         }
 
         protected void NewCliente_Click(object sender, EventArgs e)
@@ -36,6 +40,11 @@ namespace Core
 
                 prestamoGV.DataSource = (from u in entidad.Prestamos where u.CuentaRelacionada == cli.ID select u).ToList();
                 prestamoGV.DataBind();
+
+                
+
+               // transaccionesGV.DataSource = (from u in entidad.Movimientos select u).ToList();
+              // transaccionesGV.DataBind();
                // cuentasGV.DataSource = ;
                // cuentasGV.DataBind();
             }
