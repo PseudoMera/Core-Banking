@@ -18,7 +18,7 @@ namespace Core
         {
             using (MyBankEntities entities = new MyBankEntities())
             {
-                if (saldoBox.Text != "" && cedulaBox != "")
+                if (saldoBox.Text != "" && cedulaBox.Text != "")
                 {
                     float monto = Convert.ToSingle(saldoBox.Text);
                     Cliente rest = entities.Clientes.FirstOrDefault(c => c.CedulaIdentidad == cedulaBox.Text);
