@@ -26,6 +26,18 @@
                 OnClientClick="window.open('NewClient.aspx','NewClient');">
                 Crear nuevo cliente
             </asp:LinkButton>
+
+          
+
+          <asp:Table runat="server" ID="table1">
+               <asp:tablerow>
+                   <asp:tablecell>Buscar cliente</asp:tablecell>
+                   <asp:tablecell><asp:TextBox ID="SearchBox" runat="server" placeholder="Cedula de identidad"></asp:TextBox></asp:tablecell>
+                   <asp:tablecell><asp:Button ID="SearchBtn" Text="Search" runat="server" OnClick="SearchBtn_Click"/></asp:tablecell>
+               </asp:tablerow>
+          </asp:Table>
+
+            <asp:DataGrid ID="gridClientes" runat="server"></asp:DataGrid>
         </div>
     </form>
 </body>

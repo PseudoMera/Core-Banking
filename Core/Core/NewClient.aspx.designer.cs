@@ -58,13 +58,13 @@ namespace Core {
         protected global::System.Web.UI.WebControls.TextBox cityBox;
         
         /// <summary>
-        /// RadioButtonList1 control.
+        /// genderListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList genderListBox;
         
         /// <summary>
         /// dirBox control.
