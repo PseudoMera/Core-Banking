@@ -36,10 +36,12 @@ namespace Core
 
                     entities.SaveChanges();
                     Response.Redirect("~/adminPage.aspx");
-                } else
+                }
+                else
                 {
                     Response.Write("No ha introducido ningun dato");
                 }
+            }
         }
     }
 }

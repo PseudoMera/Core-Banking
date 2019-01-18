@@ -18,25 +18,31 @@ namespace Core
         {
             using (MyBankEntities entities = new MyBankEntities())
             {
-                int intereses = 2;
-                DateTime fechaAper = DateTime.Now;
-                TimeSpan time = new TimeSpan(36, 5, 7, 0);
-                DateTime combined = fechaAper.Add(time);
-                DateTime fechaPlazo = combined;
-                var cuentaRelaciona = entities.Clientes.FirstOrDefault(t => t.CedulaIdentidad.Equals(cedulaBox.Text));
-                int cr = cuentaRelaciona.ID;
-                float monto = Convert.ToSingle(DeudaBox.Text);
-                var c = new Prestamo
+                if (cedulaBox.Text != "" && DeudaBox.Text != "" && plazoBox.Text != "")
                 {
-                    Intereses = intereses,
-                    FechaApertura = fechaAper,
-                    FechaPlazo = fechaPlazo,
-                    CuentaRelacionada = cr,
-                    Monto = monto
-                };
+                    int intereses = 2;
+                    DateTime fechaAper = DateTime.Now;
+                    TimeSpan time = new TimeSpan(36, 5, 7, 0);
+                    DateTime combined = fechaAper.Add(time);
+                    DateTime fechaPlazo = combined;
+                    var cuentaRelaciona = entities.Clientes.FirstOrDefault(t => t.CedulaIdentidad.Equals(cedulaBox.Text));
+                    int cr = cuentaRelaciona.ID;
+                    float monto = Convert.ToSingle(DeudaBox.Text);
+                    var c = new Prestamo
+                    {
+                        Intereses = intereses,
+                        FechaApertura = fechaAper,
+                        FechaPlazo = fechaPlazo,
+                        CuentaRelacionada = cr,
+                        Monto = monto
+                    };
 
-                entities.Prestamos.Add(c);
-                entities.SaveChanges();
+                    entities.Prestamos.Add(c);
+                    entities.SaveChanges();
+                } else
+                {
+                    Response.Write("No ha introducido ningun dato");
+                }
             }
 
         }

@@ -17,35 +17,39 @@ namespace Core
 
         protected void createBtn_Click(object sender, EventArgs e)
         {
-            using (MyBankEntities entidad = new MyBankEntities())
+            if (cityBox.Text != "" && countryBox.Text != "" && dirBox.Text != "" && genderListBox.Text != "" && idBox.Text != ""
+                && lnameBox.Text != "" && nameBox.Text != "" && telCelBox.Text != "")
             {
-                string nombre = nameBox.Text;
-                string apellido = lnameBox.Text;
-                string ciudad = cityBox.Text;
-                string pais = countryBox.Text;
-                string direccion = dirBox.Text;
-                string telefonoResidencial = telResbox.Text;
-                string telefonoCelular = telCelBox.Text;
-                string sexo = genderListBox.Text;
-                string cedulaIdentidad = idBox.Text;
-
-                var c = new Cliente
+                using (MyBankEntities entidad = new MyBankEntities())
                 {
-                    Nombre = nombre,
-                    Apellido = apellido,
-                    Ciudad = ciudad,
-                    Pais = pais,
-                    Direccion = direccion,
-                    TelefonoResidencial = telefonoResidencial,
-                    TelefonoCelular = telefonoCelular,
-                    Sexo = sexo,
-                    CedulaIdentidad = cedulaIdentidad
-                };
+                    string nombre = nameBox.Text;
+                    string apellido = lnameBox.Text;
+                    string ciudad = cityBox.Text;
+                    string pais = countryBox.Text;
+                    string direccion = dirBox.Text;
+                    string telefonoResidencial = telResbox.Text;
+                    string telefonoCelular = telCelBox.Text;
+                    string sexo = genderListBox.Text;
+                    string cedulaIdentidad = idBox.Text;
 
-                entidad.Clientes.Add(c);
-                entidad.SaveChanges();
+                    var c = new Cliente
+                    {
+                        Nombre = nombre,
+                        Apellido = apellido,
+                        Ciudad = ciudad,
+                        Pais = pais,
+                        Direccion = direccion,
+                        TelefonoResidencial = telefonoResidencial,
+                        TelefonoCelular = telefonoCelular,
+                        Sexo = sexo,
+                        CedulaIdentidad = cedulaIdentidad
+                    };
 
-                ClientScript.RegisterStartupScript(typeof(Page), "NewClient", "window.close();", true);
+                    entidad.Clientes.Add(c);
+                    entidad.SaveChanges();
+
+                    ClientScript.RegisterStartupScript(typeof(Page), "NewClient", "window.close();", true);
+                }
             }
         }
     }
