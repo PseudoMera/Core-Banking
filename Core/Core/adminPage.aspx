@@ -36,8 +36,21 @@
                    <asp:tablecell><asp:Button ID="SearchBtn" Text="Search" runat="server" OnClick="SearchBtn_Click"/></asp:tablecell>
                </asp:tablerow>
           </asp:Table>
+             <asp:GridView ID="gridClientes" runat="server"></asp:GridView>
 
-            <asp:DataGrid ID="gridClientes" runat="server"></asp:DataGrid>
+            <asp:Label runat="server" ID ="cuentasLabel" Font-Size="Large" Font-Bold ="true" Font-Underline="true">Cuentas</asp:Label><br />
+            <asp:GridView runat="server" ID="cuentasGV"></asp:GridView>
+
+
+            <asp:Label runat="server" ID="optionsLabel" Font-Size="Large" Font-Bold="true" Font-Underline="true">Opciones</asp:Label><br />
+
+             <asp:LinkButton id="NewCuenta" runat="server" CssClass ="lbClass"  OnClientClick="window.open('NewAccount.aspx','NewAccount');" >
+                Abrir cuenta
+            </asp:LinkButton><br />
+
+            <asp:LinkButton id="AbrirPrestamo" runat="server" CssClass ="lbClass" >
+                Solicitar prestamo
+            </asp:LinkButton><br />
         </div>
     </form>
 </body>

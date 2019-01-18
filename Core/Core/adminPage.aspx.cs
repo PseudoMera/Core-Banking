@@ -22,11 +22,20 @@ namespace Core
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
             DBmodelDataContext dbContext = new DBmodelDataContext();
-            gridClientes.DataSource = from cliente in dbContext.Clientes
-                                      where cliente.CedulaIdentidad == SearchBox.Text
-                                      orderby cliente.ID
-                                      select cliente;
+            Cliente client = dbContext.Clientes.FirstOrDefault(t => t.CedulaIdentidad == SearchBox.Text);
+            Cuenta cuent = new Cuenta();
+
+            gridClientes.DataSource = from clientes in dbContext.Clientes where clientes.CedulaIdentidad == SearchBox.Text select clientes;
             gridClientes.DataBind();
+           
+            cuentasGV.DataSource = client.Cuentas;
+            cuentasGV.DataBind();   
+        }
+
+        protected void openCliente_Click(object sender, EventArgs e)
+        {
+            if(gridClientes.Rows.Count > 0)
+                Response.Redirect("~/PerfilCliente.aspx");
         }
     }
 }

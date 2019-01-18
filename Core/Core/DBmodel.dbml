@@ -11,7 +11,7 @@
       <Column Name="TelefonoResidencial" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="TelefonoCelular" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="FechaCreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Sexo" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CedulaIdentidad" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Association Name="Cliente_Cuenta" Member="Cuentas" ThisKey="ID" OtherKey="IdCuenta" Type="Cuenta" />
     </Type>
@@ -31,7 +31,7 @@
   </Table>
   <Table Name="dbo.Movimientos" Member="Movimientos">
     <Type Name="Movimiento">
-      <Column Name="idMovimiento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idMovimiento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="tipoMovimiento" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="Monto" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="CuentaEmisor" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -46,7 +46,6 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Intereses" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FechaApertura" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="HoraApertura" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Column Name="FechaPlazo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CuentaRelacionada" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Cuenta_Prestamo" Member="Cuenta" ThisKey="CuentaRelacionada" OtherKey="ID" Type="Cuenta" IsForeignKey="true" />

@@ -36,6 +36,9 @@ namespace Core
     partial void InsertCuenta(Cuenta instance);
     partial void UpdateCuenta(Cuenta instance);
     partial void DeleteCuenta(Cuenta instance);
+    partial void InsertMovimiento(Movimiento instance);
+    partial void UpdateMovimiento(Movimiento instance);
+    partial void DeleteMovimiento(Movimiento instance);
     partial void InsertPrestamo(Prestamo instance);
     partial void UpdatePrestamo(Prestamo instance);
     partial void DeletePrestamo(Prestamo instance);
@@ -348,7 +351,7 @@ namespace Core
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexo", DbType="NVarChar(1)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sexo", DbType="NVarChar(50)")]
 		public string Sexo
 		{
 			get
@@ -710,10 +713,12 @@ namespace Core
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Movimientos")]
-	public partial class Movimiento
+	public partial class Movimiento : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private System.Nullable<int> _idMovimiento;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idMovimiento;
 		
 		private string _tipoMovimiento;
 		
@@ -729,12 +734,35 @@ namespace Core
 		
 		private string _Banco;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidMovimientoChanging(int value);
+    partial void OnidMovimientoChanged();
+    partial void OntipoMovimientoChanging(string value);
+    partial void OntipoMovimientoChanged();
+    partial void OnMontoChanging(System.Nullable<double> value);
+    partial void OnMontoChanged();
+    partial void OnCuentaEmisorChanging(System.Nullable<int> value);
+    partial void OnCuentaEmisorChanged();
+    partial void OnCuentaReceptorChanging(System.Nullable<int> value);
+    partial void OnCuentaReceptorChanged();
+    partial void OnTiempoStampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTiempoStampChanged();
+    partial void Ondebito_creditoChanging(string value);
+    partial void Ondebito_creditoChanged();
+    partial void OnBancoChanging(string value);
+    partial void OnBancoChanged();
+    #endregion
+		
 		public Movimiento()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMovimiento", DbType="Int")]
-		public System.Nullable<int> idMovimiento
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMovimiento", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idMovimiento
 		{
 			get
 			{
@@ -744,7 +772,11 @@ namespace Core
 			{
 				if ((this._idMovimiento != value))
 				{
+					this.OnidMovimientoChanging(value);
+					this.SendPropertyChanging();
 					this._idMovimiento = value;
+					this.SendPropertyChanged("idMovimiento");
+					this.OnidMovimientoChanged();
 				}
 			}
 		}
@@ -760,7 +792,11 @@ namespace Core
 			{
 				if ((this._tipoMovimiento != value))
 				{
+					this.OntipoMovimientoChanging(value);
+					this.SendPropertyChanging();
 					this._tipoMovimiento = value;
+					this.SendPropertyChanged("tipoMovimiento");
+					this.OntipoMovimientoChanged();
 				}
 			}
 		}
@@ -776,7 +812,11 @@ namespace Core
 			{
 				if ((this._Monto != value))
 				{
+					this.OnMontoChanging(value);
+					this.SendPropertyChanging();
 					this._Monto = value;
+					this.SendPropertyChanged("Monto");
+					this.OnMontoChanged();
 				}
 			}
 		}
@@ -792,7 +832,11 @@ namespace Core
 			{
 				if ((this._CuentaEmisor != value))
 				{
+					this.OnCuentaEmisorChanging(value);
+					this.SendPropertyChanging();
 					this._CuentaEmisor = value;
+					this.SendPropertyChanged("CuentaEmisor");
+					this.OnCuentaEmisorChanged();
 				}
 			}
 		}
@@ -808,7 +852,11 @@ namespace Core
 			{
 				if ((this._CuentaReceptor != value))
 				{
+					this.OnCuentaReceptorChanging(value);
+					this.SendPropertyChanging();
 					this._CuentaReceptor = value;
+					this.SendPropertyChanged("CuentaReceptor");
+					this.OnCuentaReceptorChanged();
 				}
 			}
 		}
@@ -824,7 +872,11 @@ namespace Core
 			{
 				if ((this._TiempoStamp != value))
 				{
+					this.OnTiempoStampChanging(value);
+					this.SendPropertyChanging();
 					this._TiempoStamp = value;
+					this.SendPropertyChanged("TiempoStamp");
+					this.OnTiempoStampChanged();
 				}
 			}
 		}
@@ -840,7 +892,11 @@ namespace Core
 			{
 				if ((this._debito_credito != value))
 				{
+					this.Ondebito_creditoChanging(value);
+					this.SendPropertyChanging();
 					this._debito_credito = value;
+					this.SendPropertyChanged("debito_credito");
+					this.Ondebito_creditoChanged();
 				}
 			}
 		}
@@ -856,8 +912,32 @@ namespace Core
 			{
 				if ((this._Banco != value))
 				{
+					this.OnBancoChanging(value);
+					this.SendPropertyChanging();
 					this._Banco = value;
+					this.SendPropertyChanged("Banco");
+					this.OnBancoChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -873,8 +953,6 @@ namespace Core
 		private System.Nullable<int> _Intereses;
 		
 		private System.Nullable<System.DateTime> _FechaApertura;
-		
-		private System.Data.Linq.Binary _HoraApertura;
 		
 		private System.Nullable<int> _FechaPlazo;
 		
@@ -892,8 +970,6 @@ namespace Core
     partial void OnInteresesChanged();
     partial void OnFechaAperturaChanging(System.Nullable<System.DateTime> value);
     partial void OnFechaAperturaChanged();
-    partial void OnHoraAperturaChanging(System.Data.Linq.Binary value);
-    partial void OnHoraAperturaChanged();
     partial void OnFechaPlazoChanging(System.Nullable<int> value);
     partial void OnFechaPlazoChanged();
     partial void OnCuentaRelacionadaChanging(System.Nullable<int> value);
@@ -906,7 +982,7 @@ namespace Core
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -926,7 +1002,7 @@ namespace Core
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intereses", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intereses", DbType="Int")]
 		public System.Nullable<int> Intereses
 		{
 			get
@@ -946,7 +1022,7 @@ namespace Core
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaApertura", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaApertura", DbType="DateTime")]
 		public System.Nullable<System.DateTime> FechaApertura
 		{
 			get
@@ -966,27 +1042,7 @@ namespace Core
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraApertura", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary HoraApertura
-		{
-			get
-			{
-				return this._HoraApertura;
-			}
-			set
-			{
-				if ((this._HoraApertura != value))
-				{
-					this.OnHoraAperturaChanging(value);
-					this.SendPropertyChanging();
-					this._HoraApertura = value;
-					this.SendPropertyChanged("HoraApertura");
-					this.OnHoraAperturaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaPlazo", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaPlazo", DbType="Int")]
 		public System.Nullable<int> FechaPlazo
 		{
 			get
@@ -1006,7 +1062,7 @@ namespace Core
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CuentaRelacionada", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CuentaRelacionada", DbType="Int")]
 		public System.Nullable<int> CuentaRelacionada
 		{
 			get

@@ -28,11 +28,10 @@ namespace Core
             cliente.TelefonoCelular = telCelBox.Text;
             cliente.FechaCreacion = DateTime.Now;
             cliente.Sexo = genderListBox.Text;
-            cliente.CedulaIdentidad = idBox.Text;
+            cliente.CedulaIdentidad = idBox.Text;       
             db.Clientes.InsertOnSubmit(cliente);
-            db.SubmitChanges();
-            adminPage ap = new adminPage();
-            
+            db.SubmitChanges();          
+            ClientScript.RegisterStartupScript(typeof(Page), "NewClient", "window.close();", true);           
         }
     }
 }
