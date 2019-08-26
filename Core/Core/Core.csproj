@@ -76,7 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\adminPage.aspx" />
+    <Content Include="adminPage.aspx" />
     <Content Include="BBmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BBmodel.Context.cs</LastGenOutput>
@@ -87,21 +87,21 @@
       <DependentUpon>BBmodel.edmx</DependentUpon>
       <LastGenOutput>BBmodel.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\default.aspx" />
-    <Content Include="Views\LoanPayment.aspx" />
-    <Content Include="Views\OpenLoan.aspx" />
-    <Content Include="Views\NewAccount.aspx" />
-    <Content Include="Views\NewClient.aspx" />
+    <Content Include="default.aspx" />
+    <Content Include="LoanPayment.aspx" />
+    <Content Include="OpenLoan.aspx" />
+    <Content Include="NewAccount.aspx" />
+    <Content Include="NewClient.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\adminPage.aspx.cs">
+    <Compile Include="adminPage.aspx.cs">
       <DependentUpon>adminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\adminPage.aspx.designer.cs">
+    <Compile Include="adminPage.aspx.designer.cs">
       <DependentUpon>adminPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="BBmodel.Context.cs">
@@ -128,42 +128,42 @@
     <Compile Include="database_firewall_rules.cs">
       <DependentUpon>BBmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\default.aspx.cs">
+    <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\default.aspx.designer.cs">
+    <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoanPayment.aspx.cs">
+    <Compile Include="LoanPayment.aspx.cs">
       <DependentUpon>LoanPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\LoanPayment.aspx.designer.cs">
+    <Compile Include="LoanPayment.aspx.designer.cs">
       <DependentUpon>LoanPayment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\OpenLoan.aspx.cs">
+    <Compile Include="OpenLoan.aspx.cs">
       <DependentUpon>OpenLoan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\OpenLoan.aspx.designer.cs">
+    <Compile Include="OpenLoan.aspx.designer.cs">
       <DependentUpon>OpenLoan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Movimiento.cs">
       <DependentUpon>BBmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewAccount.aspx.cs">
+    <Compile Include="NewAccount.aspx.cs">
       <DependentUpon>NewAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\NewAccount.aspx.designer.cs">
+    <Compile Include="NewAccount.aspx.designer.cs">
       <DependentUpon>NewAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewClient.aspx.cs">
+    <Compile Include="NewClient.aspx.cs">
       <DependentUpon>NewClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\NewClient.aspx.designer.cs">
+    <Compile Include="NewClient.aspx.designer.cs">
       <DependentUpon>NewClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Prestamo.cs">
